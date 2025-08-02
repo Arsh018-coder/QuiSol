@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import CreateTicket from './pages/CreateTicket'
+import TicketDetail from './pages/TicketDetail'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-ticket" element={<CreateTicket />} />
+            <Route path="/ticket/:id" element={<TicketDetail />} />
           </Routes>
         </main>
       </div>
