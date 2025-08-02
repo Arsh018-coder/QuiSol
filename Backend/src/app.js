@@ -3,11 +3,11 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 
-const authRoutes = require('./routes/authRoutes');
-const ticketRoutes = require('./routes/ticketRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');
-const analyticsRoutes = require('./routes/analyticsRoutes');
-const notificationRoutes = require('./routes/notificationRoutes');
+const authRoutes = require('./Routes/authRoutes');
+const ticketRoutes = require('./Routes/ticketRoutes');
+const categoryRoutes = require('./Routes/categoryRoutes');
+const analyticsRoutes = require('./Routes/analyticsRoutes');
+const notificationRoutes = require('./Routes/notificationRoutes');
 
 const errorHandler = require('./middlewares/errorHandler');
 

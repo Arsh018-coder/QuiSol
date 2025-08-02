@@ -54,6 +54,9 @@ export default function Home() {
             A smart and simple helpdesk to streamline your support workflow.
             Raise tickets, get quick help, and track issue status in real-time—all in one place.
           </p>
+          <div className="mb-4">
+            <span className="text-sm text-gray-500">Backend status: {backendStatus}</span>
+          </div>
           <div className="space-x-4">
             <Link to="/register" className="btn-primary">
               Get Started
