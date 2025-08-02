@@ -1,27 +1,5 @@
-<<<<<<< HEAD
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
-const jwtSecret = process.env.JWT_SECRET;
-
-const generateToken = (user) => {
-  return jwt.sign(
-    { id: user.id, username: user.username, role: user.role },
-    jwtSecret,
-    { expiresIn: '1d' }
-  );
-};
-
-const verifyToken = (token) => {
-  return jwt.verify(token, jwtSecret);
-};
-
-module.exports = {
-  generateToken,
-  verifyToken
-};
-=======
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 /**
  * Generate a JWT token
@@ -52,4 +30,4 @@ module.exports = {
   generateToken,
   verifyToken,
 }
->>>>>>> 1af819a2de9b7e5f02bb85a9bd745f400ad47b99
+
