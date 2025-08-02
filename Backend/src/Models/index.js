@@ -5,7 +5,7 @@ const User = require('./user')(sequelize, DataTypes);
 const Category = require('./Category')(sequelize, DataTypes);
 const Ticket = require('./Ticket')(sequelize, DataTypes);
 const Comment = require('./Comment')(sequelize, DataTypes);
-const Notification = require('./notification')(sequelize, DataTypes);
+const Notification = require('./Notification')(sequelize, DataTypes);
 
 
 // Relationships
@@ -31,4 +31,5 @@ module.exports = {
   Category,
   Ticket,
   Comment,
+  Notification,
 };

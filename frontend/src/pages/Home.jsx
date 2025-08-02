@@ -1,7 +1,26 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import ChartWidget from '../components/ChartWidget'
+import apiService from '../services/api'
 
 export default function Home() {
+  const [backendStatus, setBackendStatus] = useState('checking...')
+
+  useEffect(() => {
+    // Test backend connection on component mount
+    const testConnection = async () => {
+      try {
+        const health = await apiService.healthCheck()
+        setBackendStatus('✅ Connected')
+        console.log('Backend health check:', health)
+      } catch (error) {
+        setBackendStatus('❌ Disconnected')
+        console.error('Backend connection failed:', error)
+      }
+    }
+    
+    testConnection()
+  }, [])
   // 🎯 Sample chart data — replace with API later
   const chartData = {
     labels: ['Technical', 'Billing', 'Account', 'Bug', 'Other'],
