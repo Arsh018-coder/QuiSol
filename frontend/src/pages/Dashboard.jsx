@@ -7,6 +7,7 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('recent')
 
+
   // Mock data - replace with API call later
   useEffect(() => {
     const mockTickets = [

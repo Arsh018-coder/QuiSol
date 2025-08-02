@@ -13,13 +13,15 @@ export default function CreateTicket() {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+
   const categories = [
     'Technical Support',
     'Account Issues',
     'Billing',
     'Feature Request',
     'Bug Report',
-    'General Inquiry'
+    'General Inquiry',
+    'Other'
   ]
 
   const priorities = [
@@ -91,6 +93,7 @@ export default function CreateTicket() {
     }
   }
 
+  
   return (
     <div className="max-w-2xl mx-auto">
       {/* Header */}

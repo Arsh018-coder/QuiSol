@@ -119,7 +119,7 @@ export default function Register() {
             >
               <option value="user">End User</option>
               <option value="agent">Support Agent</option>
-              <option value="admin">Administrator</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
 
