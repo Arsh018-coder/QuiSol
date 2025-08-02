@@ -76,13 +76,13 @@ export default function Register() {
         const reader = new FileReader()
         reader.onloadend = () => {
           localStorage.setItem('profilePic', reader.result)
-          alert('Registration successful! (This is a demo)')
+          alert('Registration successful!')
           // Redirect or further logic here
         }
         reader.readAsDataURL(formData.profilePic)
       } else {
         localStorage.removeItem('profilePic')
-        alert('Registration successful! (This is a demo)')
+        alert('Registration successful!')
         // Redirect or further logic here
       }
     } else {
