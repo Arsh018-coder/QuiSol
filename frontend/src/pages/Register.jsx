@@ -7,22 +7,36 @@ export default function Register() {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'user'
+    role: 'user',
+    profilePic: null, // Add profilePic to state
   })
-
+  const [profilePicPreview, setProfilePicPreview] = useState(null)
   const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-    // Clear error when user starts typing
-    if (errors[e.target.name]) {
-      setErrors({
-        ...errors,
-        [e.target.name]: ''
+    if (e.target.name === 'profilePic') {
+      const file = e.target.files[0]
+      setFormData({
+        ...formData,
+        profilePic: file,
       })
+      if (file) {
+        setProfilePicPreview(URL.createObjectURL(file))
+      } else {
+        setProfilePicPreview(null)
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      })
+      // Clear error when user starts typing
+      if (errors[e.target.name]) {
+        setErrors({
+          ...errors,
+          [e.target.name]: '',
+        })
+      }
     }
   }
 
@@ -57,9 +71,20 @@ export default function Register() {
     const formErrors = validateForm()
     
     if (Object.keys(formErrors).length === 0) {
-      console.log('Registration form submitted:', formData)
-      // TODO: Add registration logic here
-      alert('Registration successful! (This is a demo)')
+      // Save profilePic as a data URL for demo purposes
+      if (formData.profilePic) {
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          localStorage.setItem('profilePic', reader.result)
+          alert('Registration successful! (This is a demo)')
+          // Redirect or further logic here
+        }
+        reader.readAsDataURL(formData.profilePic)
+      } else {
+        localStorage.removeItem('profilePic')
+        alert('Registration successful! (This is a demo)')
+        // Redirect or further logic here
+      }
     } else {
       setErrors(formErrors)
     }
@@ -74,6 +99,27 @@ export default function Register() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Profile Picture Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Profile Picture
+            </label>
+            <input
+              type="file"
+              name="profilePic"
+              accept="image/*"
+              onChange={handleChange}
+              className="input-field"
+            />
+            {profilePicPreview && (
+              <img
+                src={profilePicPreview}
+                alt="Profile Preview"
+                className="mt-2 w-16 h-16 rounded-full object-cover border"
+              />
+            )}
+          </div>
+
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
               Full Name
