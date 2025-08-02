@@ -1,0 +1,2 @@
+# QuiSol
+ODOO Hackathon Project
