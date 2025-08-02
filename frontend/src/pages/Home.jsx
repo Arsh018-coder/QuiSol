@@ -4,7 +4,9 @@ import ChartWidget from '../components/ChartWidget'
 import apiService from '../services/api'
 
 export default function Home() {
-  const [backendStatus, setBackendStatus] = useState('checking...')
+  // We're still checking backend status in the background for logging purposes
+  // but not displaying it in the UI
+  const [, setBackendStatus] = useState('checking...')
 
   useEffect(() => {
     // Test backend connection on component mount
@@ -54,9 +56,6 @@ export default function Home() {
             A smart and simple helpdesk to streamline your support workflow.
             Raise tickets, get quick help, and track issue status in real-time—all in one place.
           </p>
-          <div className="mb-4">
-            <span className="text-sm text-gray-500">Backend status: {backendStatus}</span>
-          </div>
           <div className="space-x-4">
             <Link to="/register" className="btn-primary">
               Get Started

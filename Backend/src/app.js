@@ -7,6 +7,7 @@ const ticketRoutes = require('./Routes/ticketRoutes');
 const categoryRoutes = require('./Routes/categoryRoutes');
 const analyticsRoutes = require('./Routes/analyticsRoutes');
 const notificationRoutes = require('./Routes/notificationRoutes');
+const healthRoutes = require('./Routes/healthRoutes');
 
 const errorHandler = require('./middlewares/errorHandler');
 
@@ -22,6 +23,7 @@ app.use('/api/tickets', ticketRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/health', healthRoutes);
 
 // ❌ Error handling middleware
 app.use(errorHandler);
