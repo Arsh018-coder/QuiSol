@@ -1,59 +1,125 @@
 import { Link } from 'react-router-dom'
+import ChartWidget from '../components/ChartWidget'
 
 export default function Home() {
+  // 🎯 Sample chart data — replace with API later
+  const chartData = {
+    labels: ['Technical', 'Billing', 'Account', 'Bug', 'Other'],
+    datasets: [
+      {
+        label: 'Tickets Asked',
+        data: [22, 14, 9, 39, 7],
+        backgroundColor: '#8A1C7C', // Accent
+        borderRadius: 6,
+        maxBarThickness: 36,
+      },
+      {
+        label: 'Replies',
+        data: [18, 12, 8, 32, 7],
+        backgroundColor: '#1F0322', // Secondary
+        borderRadius: 6,
+        maxBarThickness: 36,
+      },
+    ],
+  }
+
   return (
-    <div className="max-w-4xl mx-auto text-center">
-      {/* Hero Section */}
-      <div className="mb-16">
-        <h1 className="text-5xl font-bold text-secondary mb-6">
-          Welcome to <span className="text-accent">QuiSol</span>
-        </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Your comprehensive help desk solution for managing support tickets efficiently. 
-          Streamline communication between users and support teams.
-        </p>
-        <div className="space-x-4">
-          <Link to="/register" className="btn-primary">
-            Get Started
-          </Link>
-          <Link to="/login" className="btn-secondary">
-            Sign In
-          </Link>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
-        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-          <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-            </svg>
+    <div className="text-secondary">
+      {/* 👋 Hero Section */}
+      <section className="text-center py-20 bg-dominant">
+        <div className="max-w-3xl mx-auto px-6">
+          <h1 className="text-5xl font-bold mb-6 leading-tight">
+            Welcome to <span className="text-accent">QuiSol</span>
+          </h1>
+          <p className="text-lg text-gray-700 mb-8">
+            A smart and simple helpdesk to streamline your support workflow.
+            Raise tickets, get quick help, and track issue status in real-time—all in one place.
+          </p>
+          <div className="space-x-4">
+            <Link to="/register" className="btn-primary">
+              Get Started
+            </Link>
+            <Link to="/dashboard" className="btn-secondary">
+              Explore Dashboard
+            </Link>
           </div>
-          <h3 className="text-lg font-semibold mb-2">Easy Ticket Management</h3>
-          <p className="text-gray-600">Create, track, and manage support tickets with ease.</p>
         </div>
+      </section>
 
-        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-          <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold mb-2">Real-time Communication</h3>
-          <p className="text-gray-600">Stay connected with threaded conversations and instant updates.</p>
-        </div>
+      {/* 📊 Chart Section */}
+      <section className="max-w-4xl mx-auto px-4 mt-16">
+        <ChartWidget data={chartData} title="Tickets vs Replies by Category" />
+      </section>
 
-        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-          <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-lg flex items-center justify-center mb-4 mx-auto">
-            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
+      {/* 💼 Features Section */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12">What QuiSol Offers</h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition">
+            <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-full mb-4 flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-accent"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4 6h16M4 12h16M4 18h7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Simple Ticketing</h3>
+            <p className="text-gray-600">
+              Quickly raise, track, and respond to support tickets—no clutter, just clarity.
+            </p>
           </div>
-          <h3 className="text-lg font-semibold mb-2">Analytics & Reports</h3>
-          <p className="text-gray-600">Track performance with detailed analytics and reporting.</p>
+
+          {/* Feature 2 */}
+          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition">
+            <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-full mb-4 flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-accent"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 13l4 4L19 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Role-Based Access</h3>
+            <p className="text-gray-600">
+              Tailored experiences for admins, agents, and end-users with secure login control.
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition">
+            <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-full mb-4 flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-accent"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M9 17v-6a2 2 0 012-2h4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M21 12c0 4.971-4.477 9-10 9S1 16.971 1 12 5.477 3 11 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Analytics & Insights</h3>
+            <p className="text-gray-600">
+              Visualize open tickets, resolution times, and agent productivity.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* 💡 Call to Action Footer */}
+      <section className="bg-accent text-white py-12 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Start resolving faster with QuiSol</h2>
+        <Link to="/register" className="btn-secondary text-accent bg-white hover:bg-gray-100">
+          Create Account
+        </Link>
+      </section>
     </div>
   )
 }
